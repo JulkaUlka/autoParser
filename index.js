@@ -1,11 +1,16 @@
 import TelegramBot from 'node-telegram-bot-api';
+import express from 'express';
 import dotenv from 'dotenv';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import { Car, Admin } from './db.js';
 
 dotenv.config();
-
+const app = express();
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`serve at ${port}`);
+});
 const ADMIN_BOT_TOKEN = process.env.ADMIN_BOT_TOKEN;
 const adminBot = new TelegramBot(ADMIN_BOT_TOKEN, { polling: true });
 
